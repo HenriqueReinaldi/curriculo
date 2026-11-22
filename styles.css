@@ -46,6 +46,9 @@ a:hover{
 .espaco_vazio2{
     height: 5vmax;
 }
+.espaco_vazio3{
+    height: 2vmax;
+}
 
 
 
@@ -126,6 +129,7 @@ video {
     text-decoration: none;
 }
 
+/* proj nome lingha cont */
 .projNLCont{
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -166,4 +170,58 @@ video {
         width: 80vw;
         padding: 3vw;
     }
+}
+
+.slider {
+    display: flex;
+    flex-wrap: wrap;
+
+}
+.slider-card {
+    margin: 5px;
+    max-height: 2vw;
+    min-height: 60px;
+}
+
+.slider-maior {
+    transform: translateY(-10px) scale(1.5); 
+    margin: 15px;
+}
+
+
+.experiencia{
+    canvas {
+        background-color: rgb(235, 235, 235);
+        border-radius: 15px;
+        width: 100%;
+        touch-action: none;
+    }
+    button {
+        background-color: rgb(235, 235, 235);
+        border: none;
+        border-radius: 15px;
+        font-size: 120%;
+        padding: 8px;
+
+        &:hover{
+            background-color: rgb(219, 219, 219);
+        }
+        &:active{
+            background-color: rgb(185, 185, 185);
+
+        }
+    }
+
+    button.danger{
+        background-color: rgb(220, 104, 104);
+
+        &:hover{
+            background-color: rgb(216, 55, 55);
+        }
+        &:active{
+            background-color: rgb(185, 185, 185);
+
+        }
+    }
+    
 }
