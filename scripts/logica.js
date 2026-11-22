@@ -12,7 +12,7 @@ const width = 1500;
 const height = 750;
 const cl = canva.offsetLeft + canva.clientLeft;
 const ct = canva.offsetTop + canva.clientTop;
-const ctx = canva.getContext("2d");
+const logica_ctx = canva.getContext("2d");
 
 var box_size = 90;
 var pin_size = 30;
@@ -62,41 +62,41 @@ function update_portao_pin_coords(portao){
 }
 
 function draw_wire(x, y, dx, dy, active){
-    ctx.beginPath();
-    ctx.moveTo(x, y)
-    ctx.lineTo(dx, dy)
+    logica_ctx.beginPath();
+    logica_ctx.moveTo(x, y)
+    logica_ctx.lineTo(dx, dy)
 
-    if (active) ctx.strokeStyle = "#90f5fc"
-    else ctx.strokeStyle = "#b6b6b6"
+    if (active) logica_ctx.strokeStyle = "#90f5fc"
+    else logica_ctx.strokeStyle = "#b6b6b6"
     
-    ctx.lineWidth = 5
-    ctx.stroke()
+    logica_ctx.lineWidth = 5
+    logica_ctx.stroke()
 }
 
 function draw_portao(portao){
     //portao em si
-    ctx.fillStyle = "#000000";
+    logica_ctx.fillStyle = "#000000";
     if (portao["type"] == "luz"){
-        if (portao["in"][0]["status"]) ctx.fillStyle = "#ffd91d";
+        if (portao["in"][0]["status"]) logica_ctx.fillStyle = "#ffd91d";
     }
 
-    ctx.fillRect(portao["x"], portao["y"], box_size, box_size);
-    ctx.fillStyle = "#FFFFFF";
-    ctx.textAlign = "center";
-    ctx.textBaseline = "middle";
+    logica_ctx.fillRect(portao["x"], portao["y"], box_size, box_size);
+    logica_ctx.fillStyle = "#FFFFFF";
+    logica_ctx.textAlign = "center";
+    logica_ctx.textBaseline = "middle";
     cx = portao["x"] + (box_size / 2);
     cy = portao["y"] + (box_size / 2);
-    ctx.font = "bold 23px Arial";
-    ctx.fillText(portao["type"].toUpperCase(), cx, cy);
-    ctx.fillStyle = "#676767";
+    logica_ctx.font = "bold 23px Arial";
+    logica_ctx.fillText(portao["type"].toUpperCase(), cx, cy);
+    logica_ctx.fillStyle = "#676767";
 
 
     update_portao_pin_coords(portao);
     for (let i = 0; i < portao["in"].length; i++){
-        ctx.fillRect(portao["in"][i]["x"], portao["in"][i]["y"], pin_size, pin_size);
+        logica_ctx.fillRect(portao["in"][i]["x"], portao["in"][i]["y"], pin_size, pin_size);
     }
     for (let i = 0; i < portao["out"].length; i++){
-        ctx.fillRect(portao["out"][i]["x"], portao["out"][i]["y"], pin_size, pin_size);
+        logica_ctx.fillRect(portao["out"][i]["x"], portao["out"][i]["y"], pin_size, pin_size);
     }
 
     //fios
@@ -162,7 +162,7 @@ function gloop(){
     }
 
     //DESENHAR TUDO
-    ctx.reset();
+    logica_ctx.reset();
     //desenhar portao
     for (let i = 0; i < portoes.length; i++){
         draw_portao(portoes[i]);
@@ -197,8 +197,8 @@ function update_ponteiro_pos(e){
 
 
     // const size = 10;
-    // ctx.fillStyle = "red";
-    // ctx.fillRect(mouse_x - size / 2, mouse_y - size / 2, size, size);
+    // logica_ctx.fillStyle = "red";
+    // logica_ctx.fillRect(mouse_x - size / 2, mouse_y - size / 2, size, size);
 
     if (mouse_held){
         if (portao_carregando){
